@@ -9,6 +9,7 @@ export interface Datum {
     full_name:     string;
     type_document: TypeDocument;
     n_document:    number;
+    phone:         string;
     email:         string;
 }
 

@@ -1,0 +1,141 @@
+<h1>Registrar Cliente</h1>
+<p-button routerLink="/customers">Regresar</p-button>
+
+<form [formGroup]="formCustomer" (ngSubmit)="onSubmit()">
+    <section>
+        <label for="name">Nombres: </label>
+        <input id="name" type="text" name="name" pInputText formControlName="name" />
+        <div
+            *ngIf="formCustomer.get('name')?.invalid && (formCustomer.get('name')?.touched || formCustomer.get('name')?.dirty)">
+            <small *ngIf="formCustomer.get('name')?.errors?.['required']" class="error">El nombre es requerido.</small>
+            <small *ngIf="formCustomer.get('name')?.errors?.['minlength']" class="error">El nombre debe tener al menos 3
+                caracteres.</small>
+            <small *ngIf="formCustomer.get('name')?.errors?.['maxlength']" class="error">El nombre no puede exceder los
+                30 caracteres.</small>
+        </div>
+
+        <label for="paternalSurname">Apellido Paterno: </label>
+        <input id="paternalSurname" type="text" name="paternal_surname" pInputText formControlName="paternal_surname" />
+        <div
+            *ngIf="formCustomer.get('paternal_surname')?.invalid && (formCustomer.get('paternal_surname')?.touched || formCustomer.get('paternal_surname')?.dirty)">
+            <small *ngIf="formCustomer.get('paternal_surname')?.errors?.['required']" class="error">El apellido paterno
+                es requerido.</small>
+            <small *ngIf="formCustomer.get('paternal_surname')?.errors?.['minlength']" class="error">El apellido paterno
+                debe tener al menos 3 caracteres.</small>
+            <small *ngIf="formCustomer.get('paternal_surname')?.errors?.['maxlength']" class="error">El apellido paterno
+                no puede exceder los 30 caracteres.</small>
+        </div>
+
+        <label for="maternalSurname">Apellido Materno: </label>
+        <input id="maternalSurname" type="text" name="maternal_surname" pInputText formControlName="maternal_surname" />
+        <div
+            *ngIf="formCustomer.get('maternal_surname')?.invalid && (formCustomer.get('maternal_surname')?.touched || formCustomer.get('maternal_surname')?.dirty)">
+            <small *ngIf="formCustomer.get('maternal_surname')?.errors?.['required']" class="error">El apellido materno
+                es requerido.</small>
+            <small *ngIf="formCustomer.get('maternal_surname')?.errors?.['minlength']" class="error">El apellido materno
+                debe tener al menos 3 caracteres.</small>
+            <small *ngIf="formCustomer.get('maternal_surname')?.errors?.['maxlength']" class="error">El apellido materno
+                no puede exceder los 30 caracteres.</small>
+        </div>
+
+        <label for="date_of_birth">Fecha de Nacimiento: </label>
+        <p-calendar formControlName="date_of_birth" [dateFormat]="'dd-mm-yy'" />
+        <div
+            *ngIf="formCustomer.get('date_of_birth')?.invalid && (formCustomer.get('date_of_birth')?.touched || formCustomer.get('date_of_birth')?.dirty)">
+            <small *ngIf="formCustomer.get('date_of_birth')?.errors?.['required']" class="error">La fecha de nacimiento
+                es requerida.</small>
+        </div>
+    </section>
+    <section>
+        <label for="typDoc">Seleccione el tipo de Documento:</label>
+        <select name="type_document" id="typDoc" formControlName="type_document">
+            <option value="DNI">DNI</option>
+            <option value="PASAPORTE">PASAPORTE</option>
+        </select>
+        <div
+            *ngIf="formCustomer.get('type_document')?.invalid && (formCustomer.get('type_document')?.touched || formCustomer.get('type_document')?.dirty)">
+            <small *ngIf="formCustomer.get('type_document')?.errors?.['required']" class="error">El tipo de documento es
+                requerido.</small>
+        </div>
+
+        <label for="nDoc">N° de Documento: </label>
+        <input id="nDoc" type="number" name="n_document" formControlName="n_document">
+        <div
+            *ngIf="formCustomer.get('n_document')?.invalid && (formCustomer.get('n_document')?.touched || formCustomer.get('n_document')?.dirty)">
+            <small *ngIf="formCustomer.get('n_document')?.errors?.['required']" class="error">El número de documento es
+                requerido.</small>
+            <small *ngIf="formCustomer.get('n_document')?.errors?.['minlength']" class="error">El número de documento
+                debe tener al menos 8 caracteres.</small>
+            <small *ngIf="formCustomer.get('n_document')?.errors?.['maxlength']" class="error">El número de documento no
+                puede exceder los 12 caracteres.</small>
+        </div>
+    </section>
+    <section>
+        <label for="email">Email: </label>
+        <input id="email" type="text" name="email" pInputText formControlName="email" />
+        <div
+            *ngIf="formCustomer.get('email')?.invalid && (formCustomer.get('email')?.touched || formCustomer.get('email')?.dirty)">
+            <small *ngIf="formCustomer.get('email')?.errors?.['required']" class="error">El email es requerido.</small>
+            <small *ngIf="formCustomer.get('email')?.errors?.['email']" class="error">El email no es válido.</small>
+        </div>
+
+        <label for="prefix">Seleccione su prefijo:</label>
+        <select name="prefix" id="prefix" formControlName="prefix">
+            <option value="+51">+51</option>
+            <option value="+52">+52</option>
+            <option value="+53">+53</option>
+        </select>
+        <div
+            *ngIf="formCustomer.get('prefix')?.invalid && (formCustomer.get('prefix')?.touched || formCustomer.get('prefix')?.dirty)">
+            <small *ngIf="formCustomer.get('prefix')?.errors?.['required']" class="error">El prefijo es
+                requerido.</small>
+        </div>
+
+        <label for="phone">N° de Telefono: </label>
+        <input id="phone" type="number" name="phone" formControlName="phone">
+        <div
+            *ngIf="formCustomer.get('phone')?.invalid && (formCustomer.get('phone')?.touched || formCustomer.get('phone')?.dirty)">
+            <small *ngIf="formCustomer.get('phone')?.errors?.['required']" class="error">El número de teléfono es
+                requerido.</small>
+        </div>
+    </section>
+    <section>
+        <label for="country">Pais: </label>
+        <input id="country" type="text" name="country" pInputText formControlName="country" />
+        <div
+            *ngIf="formCustomer.get('country')?.invalid && (formCustomer.get('country')?.touched || formCustomer.get('country')?.dirty)">
+            <small *ngIf="formCustomer.get('country')?.errors?.['required']" class="error">El país es requerido.</small>
+        </div>
+
+        <label for="region">Region: </label>
+        <input id="region" type="text" name="region" pInputText formControlName="region" />
+        <div
+            *ngIf="formCustomer.get('region')?.invalid && (formCustomer.get('region')?.touched || formCustomer.get('region')?.dirty)">
+            <small *ngIf="formCustomer.get('region')?.errors?.['required']" class="error">La región es
+                requerida.</small>
+        </div>
+
+        <label for="province">Provincia: </label>
+        <input id="province" type="text" name="province" pInputText formControlName="province" />
+        <div
+            *ngIf="formCustomer.get('province')?.invalid && (formCustomer.get('province')?.touched || formCustomer.get('province')?.dirty)">
+            <small *ngIf="formCustomer.get('province')?.errors?.['required']" class="error">La provincia es
+                requerida.</small>
+        </div>
+
+        <label for="city">Ciudad: </label>
+        <input id="city" type="text" name="city" pInputText formControlName="city" />
+        <div
+            *ngIf="formCustomer.get('city')?.invalid && (formCustomer.get('city')?.touched || formCustomer.get('city')?.dirty)">
+            <small *ngIf="formCustomer.get('city')?.errors?.['required']" class="error">La ciudad es requerida.</small>
+        </div>
+
+        <label for="street">Calle: </label>
+        <input id="street" type="text" name="street" pInputText formControlName="street" />
+        <div
+            *ngIf="formCustomer.get('street')?.invalid && (formCustomer.get('street')?.touched || formCustomer.get('street')?.dirty)">
+            <small *ngIf="formCustomer.get('street')?.errors?.['required']" class="error">La calle es requerida.</small>
+        </div>
+    </section>
+    <p-button label="Registrar" type="submit"></p-button>
+</form>

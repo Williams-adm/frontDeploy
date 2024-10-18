@@ -1,1 +1,71 @@
 <h1>Clientes</h1>
+<p-button routerLink="create">Registrar Cliente</p-button>
+<div class="card">
+    <p-table [value]="customersList" [paginator]="true" [rows]="15" [totalRecords]="totalRecords" [lazy]="true"
+        [loading]="loading" [tableStyle]="{ 'min-width': '50rem' }" (onLazyLoad)="loadCustomers($event)"
+        [rowsPerPageOptions]="[15, 30, 45]">
+        <ng-template pTemplate="header">
+            <tr>
+                <th style="width:5%">#</th>
+                <th style="width:10%">Nombres</th>
+                <th style="width:25%">Tipo De Documento</th>
+                <th style="width:10%">N° Documento</th>
+                <th style="width:20%">N° Telefono</th>
+                <th style="width:20%">Email</th>
+                <th style="width:20%">Opciones</th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-customer let-i="rowIndex">
+            <tr class="prueba">
+                <td>{{ i + 1 }}</td>   
+                <td>{{ customer.full_name }}</td>
+                <td>{{ customer.type_document }}</td>
+                <td>{{ customer.n_document }}</td>
+                <td>{{ customer.phone }}</td>
+                <td>{{ customer.email }}</td>
+                <td>
+                    <div class="iconos">
+                        <p-button (onClick)="showDialog(customer.id)" icon="pi pi-user" />  
+                        <p-button icon="pi pi-pen-to-square" />  
+                        <p-button (click)="deleteCustomer(customer.id)" icon="pi pi-trash" />  
+                    </div>
+                </td>
+            </tr>
+        </ng-template>
+    </p-table>
+</div>
+
+<div>
+    <p-dialog [header]="selectedCustomers ? (selectedCustomers.full_name) : 'Empleado'"
+        [modal]="true" [(visible)]="visible" [style]="{ width: '50rem' }">
+        <ng-container *ngIf="selectedCustomers">
+            <section>
+                <h3>Información</h3>
+                <div>
+                    <p><strong>Fecha De Nacimiento: </strong>{{selectedCustomers.date_of_birth}}</p>
+                    <p><strong>Email: </strong>{{selectedCustomers.email}}</p>
+                    <p><strong>N° De Telefono: </strong>{{selectedCustomers.number_phone}}</p>
+                </div>
+            </section>
+            <hr>
+            <section>
+                <h3>Documento</h3>
+                <div>
+                    <p><strong>Tipo: </strong>{{selectedCustomers.type_document}}</p>
+                    <p><strong>N°: </strong>{{selectedCustomers.n_document}}</p>
+                </div>
+            </section>
+            <hr>
+            <section>
+                <h3>Direccion</h3>
+                <div>
+                    <p><strong>Pais: </strong>{{selectedCustomers.country}}</p>
+                    <p><strong>Region: </strong>{{selectedCustomers.region}}</p>
+                    <p><strong>Provincia: </strong>{{selectedCustomers.province}}</p>
+                    <p><strong>Ciudad: </strong>{{selectedCustomers.city}}</p>
+                    <p><strong>Calle: </strong>{{selectedCustomers.street}}</p>
+                </div>
+            </section>
+        </ng-container>
+    </p-dialog>
+</div>
