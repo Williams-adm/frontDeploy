@@ -11,6 +11,9 @@ import { CustomerService } from '../../../shared/services/customer.service';
 
 export class CreateCustomersComponent {
   formCustomer: FormGroup;
+  messageVisible = false;
+  errorMessage: string | null = null;
+
   constructor(private formBuilder: FormBuilder, private customerService: CustomerService) {
     this.formCustomer = this.formBuilder.group({
       name: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(30)]],
@@ -49,14 +52,21 @@ onSubmit() {
 
         this.customerService.storeCustomer(result).subscribe(
             (response) => {
-                console.log(response.message);
+            console.log(response.message);
+            this.messageVisible = true; 
+            this.errorMessage = null;
             },
             (error) => {
                 console.error('Error al crear el cliente:', error);
             }
         );
     } else {
+        this.errorMessage = 'Formulario no válido';
         console.log('Formulario no válido');
     }
+  }
+  stayOnPage() {
+    this.messageVisible = false; // Close the dialog and stay on the page
+    this.formCustomer.reset();
   }
 }

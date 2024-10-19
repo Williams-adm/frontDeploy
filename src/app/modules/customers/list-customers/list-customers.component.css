@@ -1,8 +1,70 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 20px;
+}
+
 .iconos {
     width: 10rem;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
+    gap: 10px;
 }
-h1{
+
+h1 {
+    color: #333;
     text-align: center;
+    margin-bottom: 20px;
+}
+
+.card {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    max-width: 80rem;
+    margin: 0 auto;
+}
+.p-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0 auto;
+}
+
+th,
+td {
+    padding: 12px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background-color: #f8f9fa;
+    color: #333;
+}
+
+/* Estilos para las filas de la tabla al pasar el ratón */
+tr:hover {
+    background-color: #f1f1f1;
+}
+
+.btn-custom {
+    margin-right: 10px;
+    /* Espacio a la derecha */
+}
+
+/* Opcional: Si quieres asegurarte de que no se vayan a la siguiente línea */
+.card {
+    display: flex;
+    /* Usar flexbox si es necesario */
+    flex-direction: row;
+    /* Alinear los elementos en fila */
+    flex-wrap: wrap;
+    /* Permitir que se envuelvan si no hay espacio */
+}
+
+.card p-button {
+    margin-bottom: 10px;
+    /* Espacio inferior para los botones si están en un contenedor */
 }

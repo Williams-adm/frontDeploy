@@ -1,14 +1,15 @@
 <h1>Clientes</h1>
-<p-button routerLink="create">Registrar Cliente</p-button>
+<p-button routerLink="" class="btn-custom">Inicio</p-button>
+<p-button routerLink="create" class="btn-custom">Registrar Cliente</p-button>
 <div class="card">
     <p-table [value]="customersList" [paginator]="true" [rows]="15" [totalRecords]="totalRecords" [lazy]="true"
-        [loading]="loading" [tableStyle]="{ 'min-width': '50rem' }" (onLazyLoad)="loadCustomers($event)"
+        [loading]="loading" [tableStyle]="{ 'max-width': '90rem' }" (onLazyLoad)="loadCustomers($event)"
         [rowsPerPageOptions]="[15, 30, 45]">
         <ng-template pTemplate="header">
             <tr>
                 <th style="width:5%">#</th>
-                <th style="width:10%">Nombres</th>
-                <th style="width:25%">Tipo De Documento</th>
+                <th style="width:50%">Nombres</th>
+                <th style="width:15%">Tipo De Documento</th>
                 <th style="width:10%">N° Documento</th>
                 <th style="width:20%">N° Telefono</th>
                 <th style="width:20%">Email</th>
@@ -26,7 +27,6 @@
                 <td>
                     <div class="iconos">
                         <p-button (onClick)="showDialog(customer.id)" icon="pi pi-user" />  
-                        <p-button icon="pi pi-pen-to-square" />  
                         <p-button (click)="deleteCustomer(customer.id)" icon="pi pi-trash" />  
                     </div>
                 </td>

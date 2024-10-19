@@ -137,5 +137,14 @@
             <small *ngIf="formCustomer.get('street')?.errors?.['required']" class="error">La calle es requerida.</small>
         </div>
     </section>
+    <div *ngIf="errorMessage" class="error">{{ errorMessage }}</div>
     <p-button label="Registrar" type="submit"></p-button>
 </form>
+
+<p-dialog header="Empleado Creado" [(visible)]="messageVisible" modal="true" [closable]="false">
+    <div>
+        <p>Empleado creado con éxito.</p>
+        <p-button label="Continuar" (click)="stayOnPage()"></p-button>
+        <p-button routerLink="/customers">Regresar</p-button>
+    </div>
+</p-dialog>
