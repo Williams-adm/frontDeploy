@@ -1,3 +1,3 @@
 export const environment = {
-    backendBaseUrl: "http://prueba.com",
+    backendBaseUrl: "https://simpledeploy-production.up.railway.app/",
 };

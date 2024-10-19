@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { environment } from '../../../../environments/environment.development';
+import { environment } from '../../../../environments/environment';
 import { customers, Datum, Meta } from '../../../shared/models/customer';
 import { CustomerService } from '../../../shared/services/customer.service';
 import { Data, showCustomer } from '../../../shared/models/showCustomer';
